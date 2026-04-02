@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 .env
 data/progress.json
+tools/deepseek_python_20260329_bf09bb.py
+tools/generate_verbs.log
