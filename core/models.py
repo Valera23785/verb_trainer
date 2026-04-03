@@ -1,6 +1,6 @@
 
 from dataclasses import dataclass, field
-
+from datetime import date
 @dataclass
 class Verb:
     id: int
@@ -14,10 +14,14 @@ class Verb:
 
 
 @dataclass
-class UserProgress:
-    verb_id: int
+class VerbProgress:
+    next_review: date
     status: str = "new"
-    next_review: str = ""
     consecutive_errors: int = 0
     consecutive_correct: int = 0
 
+@dataclass
+class UserProgress:
+    verbs: dict[int, VerbProgress] = field(default_factory=dict)
+    last_session: date = field(default_factory=date.today)
+    streak: int = 0
