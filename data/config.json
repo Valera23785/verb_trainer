@@ -1,0 +1,5 @@
+{
+    "daily_new_verbs": 5,
+    "consecutive_errors_for_hard": 2,
+    "consecutive_correct_to_recover": 2
+}

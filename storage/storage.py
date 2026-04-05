@@ -53,3 +53,11 @@ def save_progress(progress: UserProgress) -> None:
     with progress_file.open("w", encoding="utf-8") as progressfile:
         json.dump(progress_data, progressfile, ensure_ascii=False, indent=4)
         
+
+def load_config() -> dict:
+    ''' Loads configuration from config.json and returns it as a dictionary. '''
+    config_file = Path(__file__).parent.parent / "data" / "config.json"
+    if not config_file.exists():
+        raise FileNotFoundError(f"Config file {config_file} does not exist.")
+    with config_file.open("r", encoding="utf-8") as jsonfile:
+        return json.load(jsonfile)
