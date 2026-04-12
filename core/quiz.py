@@ -1,4 +1,5 @@
-from core.models import Verb
+from datetime import date, timedelta
+from core.models import Verb, UserProgress, VerbProgress
 import random
 
 def get_verb_forms(verb: Verb) -> list[str]:
@@ -69,3 +70,31 @@ def run_quiz_choice(verb: Verb, all_verbs: list[Verb]) -> bool:
                 return False
         else:
             print("Please enter a number between 1 and 4.")
+
+def update_progress(verb: Verb, progress: UserProgress, knew_it: bool, config: dict) -> None:
+    ''' Updates the user's progress for a given verb based on whether they knew it or not. '''
+    interval = {"hard": 1, "learning": 1, "review": 3, "learned": 7}
+    if verb.id not in progress.verbs:
+        vp = progress.verbs[verb.id] = VerbProgress(next_review=date.today())
+    vp = progress.verbs[verb.id]
+    progress.last_session = date.today()
+    if knew_it:
+        vp.consecutive_correct += 1
+        vp.consecutive_errors = 0
+        if vp.status == "new":
+            vp.status = "learning"
+        elif vp.status == "hard":
+            if vp.consecutive_correct >= config["consecutive_correct_to_recover"]:
+                vp.status = "learning"
+        elif vp.status == "learning":
+            vp.status = "review"
+        elif vp.status == "review":
+            vp.status = "learned"
+    else:
+        vp.consecutive_errors += 1
+        vp.consecutive_correct = 0
+        if vp.status in ("review", "learned"):
+            vp.status = "learning"
+        if vp.consecutive_errors >= config["consecutive_errors_for_hard"]:
+            vp.status = "hard"
+    vp.next_review = date.today() + timedelta(days=interval[vp.status])
