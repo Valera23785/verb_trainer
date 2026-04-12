@@ -77,8 +77,10 @@ def update_progress(verb: Verb, progress: UserProgress, knew_it: bool, config: d
     if verb.id not in progress.verbs:
         vp = progress.verbs[verb.id] = VerbProgress(next_review=date.today())
     vp = progress.verbs[verb.id]
+    vp.total_attempts += 1
     progress.last_session = date.today()
     if knew_it:
+        vp.total_correct += 1
         vp.consecutive_correct += 1
         vp.consecutive_errors = 0
         if vp.status == "new":
@@ -98,3 +100,4 @@ def update_progress(verb: Verb, progress: UserProgress, knew_it: bool, config: d
         if vp.consecutive_errors >= config["consecutive_errors_for_hard"]:
             vp.status = "hard"
     vp.next_review = date.today() + timedelta(days=interval[vp.status])
+    

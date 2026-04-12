@@ -16,9 +16,11 @@ class Verb:
 @dataclass
 class VerbProgress:
     next_review: date
-    status: str = "new"
+    status: str = "new" 
     consecutive_errors: int = 0
     consecutive_correct: int = 0
+    total_correct: int = 0
+    total_attempts: int = 0
 
 @dataclass
 class UserProgress:
