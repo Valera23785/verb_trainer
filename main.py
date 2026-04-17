@@ -20,7 +20,7 @@ def main():
 
     while True:
         print_menu()
-        choice = input("Select an option: ")
+        choice = input("Select an option: \n > ")
         if choice == "1":
             verb = random.choice(todays_verbs)
             knew_it = run_flashcard(verb)
@@ -30,7 +30,7 @@ def main():
                 session_started = True
         elif choice == "2":
             while True:
-                type_quiz = input("Choose quiz type: 1 for multiple choice, 2 for manual input, 3 to go back")
+                type_quiz = input("Choose quiz type:\n\t 1 for multiple choice\n\t 2 for manual input\n\t 3 to go back\n > ")
                 if type_quiz == "1":
                     verb = random.choice(todays_verbs)
                     knew_it = run_quiz_choice(verb, verbs)
@@ -59,6 +59,7 @@ def main():
             for verb_id, acc in accuracy.items():
                 verb_name = next((verb.english for verb in verbs if verb.id == verb_id), "Unknown")
                 print(f"{verb_name}: {acc}%")
+            input("Press Enter to go back to the main menu...")
 
         elif choice == "4":
             print("Goodbye!")

@@ -55,7 +55,7 @@ def run_quiz_choice(verb: Verb, all_verbs: list[Verb]) -> bool:
 
     random.shuffle(options)
 
-    print(f"Choose the correct {form_names[index]} from the options below:")
+    print(f'Which of the following is the correct {form_names[index]} form of the verb "{verb.russian}"?')
     for i, option in enumerate(options, start=1):
         print(f"{i}. {option}")
     while True:
