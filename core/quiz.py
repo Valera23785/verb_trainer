@@ -75,7 +75,7 @@ def update_progress(verb: Verb, progress: UserProgress, knew_it: bool, config: d
     ''' Updates the user's progress for a given verb based on whether they knew it or not. '''
     interval = {"hard": 1, "learning": 1, "review": 3, "learned": 7}
     if verb.id not in progress.verbs:
-        vp = progress.verbs[verb.id] = VerbProgress(next_review=date.today())
+        progress.verbs[verb.id] = VerbProgress(next_review=date.today())
     vp = progress.verbs[verb.id]
     vp.total_attempts += 1
     progress.last_session = date.today()
@@ -95,7 +95,7 @@ def update_progress(verb: Verb, progress: UserProgress, knew_it: bool, config: d
     else:
         vp.consecutive_errors += 1
         vp.consecutive_correct = 0
-        if vp.status in ("review", "learned"):
+        if vp.status in ("review", "learned", "new"):
             vp.status = "learning"
         if vp.consecutive_errors >= config["consecutive_errors_for_hard"]:
             vp.status = "hard"
