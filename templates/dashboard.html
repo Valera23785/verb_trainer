@@ -1,8 +1,11 @@
-{% extends "base.html" %}
-
-{% block title %}Dashboard{% endblock %}
-
-{% block content %}
-<h1>Welcome to Verb Trainer</h1>
-<p>Verbs to study today: {{ todays_count }}</p>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Verb Trainer</title>
+	</head>
+	<body>
+		<h1>Verb Trainer</h1>
+		<p>Verbs for today: {{ verb_count }}</p>
+		<p>Streak: {{ streak }} days</p>
+	</body>
+</html>
