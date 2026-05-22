@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="ru">
-	<head>
-		<meta charset="UTF-8">
-		<title>Verb Trainer</title>
-		<link rel="stylesheet" href="/static/css/style.css">
-	</head>
-	<body>
-		<h1>Verb Trainer</h1>
-		
-		<div class="dashboard-container">
-			<div class="card">
-				<p>Verbs for today</p>
-				<span class="number">{{ verb_count }}</span>
-			</div>
-			
-			<div class="card">
-				<p>Streak</p>
-				<span class="number">{{ streak }} days</span>
-			</div>
-			
-			<div class="card">
-				<p>Learned verbs</p>
-				<span class="number">{{ learned_count }}</span>
-			</div>
-		</div>
-	</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Verb Trainer{% endblock %}
+{% block content %}
+
+<div class="dashboard-container">
+	<div class="card">
+		<p>Verbs for today</p>
+		<span class="number">{{ verb_count }}</span>
+	</div>
+	
+	<div class="card">
+		<p>Streak</p>
+		<span class="number">{{ streak }} days</span>
+	</div>
+	
+	<div class="card">
+		<p>Learned verbs</p>
+		<span class="number">{{ learned_count }}</span>
+	</div>
+</div>
 
