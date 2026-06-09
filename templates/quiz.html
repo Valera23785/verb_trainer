@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz{% endblock %}
+{% block content %}
+{% if verb %}
+    <p>Translate: {{ verb.english }}</p>
+    <form action="/quiz/check" method="post">
+        <input type="hidden" name="verb_id" value="{{ verb.id }}">
+        <input type="text" name="answer">
+        <input type="submit" value="Check">
+    </form>
+{% else %}
+    <p>No verbs for today</p>
+{% endif %} 
+
+{% endblock %}
+

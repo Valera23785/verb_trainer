@@ -4,19 +4,21 @@
 {% block content %}
 
 <div class="dashboard-container">
-	<div class="card">
-		<p>Verbs for today</p>
+	<div class="stat-card">
+                <div class="label">Verbs for Today</div>
 		<span class="number">{{ verb_count }}</span>
 	</div>
 	
-	<div class="card">
-		<p>Streak</p>
-		<span class="number">{{ streak }} days</span>
+	<div class="stat-card">
+		<div class="label">Streak</div>
+		<span class="number">{{ streak }}<span class="unit">days</span>
 	</div>
 	
-	<div class="card">
-		<p>Learned verbs</p>
+	<div class="stat-card">
+		<div class="label">Learned Today</div>
 		<span class="number">{{ learned_count }}</span>
 	</div>
 </div>
+
+{% endblock %}
 
