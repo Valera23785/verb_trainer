@@ -18,4 +18,5 @@ def read_dashboard(request: Request):
     verb_count = len(get_todays_verbs(verbs, progress, config))
     learned_count = get_learned_count(progress)
     streak = get_streak(progress)
+
     return templates.TemplateResponse(request=request, name="dashboard.html", context={"verb_count": verb_count, "streak": streak, "learned_count": learned_count})

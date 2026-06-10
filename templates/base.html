@@ -13,9 +13,9 @@
         <div class="logo">VERB <em>TRAINER</em></div>
 
         <nav class="nav-pill">
-          <a href="/dashboard" class="active">Dashboard</a>
-          <a href="/quiz">Quiz</a>
-          <a href="/stats">Stats</a>
+          <a href="/dashboard" class="{% if request.url.path == '/dashboard' or request.url.path.startswith('/dashboard/') %}active{% endif %}">Dashboard</a>
+          <a href="/quiz" class="{% if request.url.path == '/quiz' or request.url.path.startswith('/quiz/') %}active{% endif %}">Quiz</a>
+          <a href="/stats" class="{% if request.url.path == '/stats' or request.url.path.startswith('/stats/') %}active{% endif %}">Stats</a>
         </nav>
 
         <div class="icon-btn" title="Settings">
