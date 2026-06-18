@@ -29,7 +29,7 @@ def load_progress() -> UserProgress:
                     ) 
                 for k, v in progress_data.get("verbs", {}).items()
                 }
-        last_session = progress_data.get("last_session", UserProgress().last_session)
+        last_session = date.fromisoformat(progress_data.get("last_session"))
         streak = progress_data.get("streak", UserProgress().streak)
         return UserProgress(verbs=verbs_progress, last_session=last_session, streak=streak)
 

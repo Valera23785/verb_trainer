@@ -24,27 +24,27 @@ def main():
         if choice == "1":
             verb = random.choice(todays_verbs)
             knew_it = run_flashcard(verb)
-            update_progress(verb, progress, knew_it, config)
             if not session_started:
                 update_streak(progress)
                 session_started = True
+            update_progress(verb, progress, knew_it, config)
         elif choice == "2":
             while True:
                 type_quiz = input("Choose quiz type:\n\t 1 for multiple choice\n\t 2 for manual input\n\t 3 to go back\n > ")
                 if type_quiz == "1":
                     verb = random.choice(todays_verbs)
                     knew_it = run_quiz_choice(verb, verbs)
-                    update_progress(verb, progress, knew_it, config)
                     if not session_started:
                         update_streak(progress)
                         session_started = True
+                    update_progress(verb, progress, knew_it, config)
                 elif type_quiz == "2":
                     verb = random.choice(todays_verbs)
                     knew_it = run_quiz_manual(verb)
-                    update_progress(verb, progress, knew_it, config)
                     if not session_started:
                         update_streak(progress)
                         session_started = True
+                    update_progress(verb, progress, knew_it, config)
                 elif type_quiz == "3":
                     break
                 else:
